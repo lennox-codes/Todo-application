@@ -1,0 +1,149 @@
+/******************************************
+/* CSS
+/*******************************************/
+
+/* Base Styles */
+
+* {
+  box-sizing: border-box;
+}
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+body {
+  background: #eae2b7;
+  counter-reset: list-item; /* Set a counter named 'list-item', and its initial value is 0. */
+}
+
+body > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: #cd0000;
+  font-size: 42px;
+  letter-spacing: -2px;
+  text-align: left;
+}
+
+/*Input Area */
+.input-container {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 300px;
+  height: 40px;
+  border: 3px solid #f48c06;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+}
+
+.input-container input {
+  width: 85%;
+  outline: none;
+  border: none;
+  border-right: none;
+  padding: 10px;
+}
+
+.input-container .add-task {
+  display: flex;
+  width: 15%;
+  justify-content: center;
+  align-items: center;
+  border-right: center;
+  font-size: 25px;
+  color: white;
+  background: #cd0000;
+  cursor: pointer;
+  transition: font-size ease-in-out 0.05s;
+  overflow: hidden;
+}
+
+.add-task {
+  margin: 0;
+}
+
+.add-task:hover {
+  background: #f48c06;
+}
+
+/* List buttons and functionality*/
+li > * {
+  margin: 0 15px;
+  padding: 3px 5px;
+  color: white;
+  font-family: courier, monospace;
+  font-weight: bold;
+  align-self: flex-end;
+}
+
+li > *:first-child {
+  align-self: flex-start;
+}
+
+li > *:hover {
+  cursor: pointer;
+}
+
+li .rmv {
+  background: red;
+}
+
+li .done {
+  background: forestGreen;
+}
+
+li.strikethrough {
+  text-decoration: line-through;
+}
+
+li .undo {
+  background: darkblue;
+}
+
+.no-display {
+  display: none;
+}
+
+/******************************************
+/* List view Styling
+/*******************************************/
+.todo-list {
+  color: #161a1d;
+  font-size: 22px;
+  font-weight: 500;
+  padding: 0;
+  font-family: courier, monospace;
+  border: 3px solid #dedede;
+}
+
+.todo-list li {
+  display: flex;
+  min-width: 600px;
+  max-width: 800px;
+  border-bottom: 2px dotted #ccc;
+  list-style-type: none;
+  background: #f0f0f0;
+  height: auto;
+  padding: 10px;
+  padding-left: 20px;
+  text-transform: capitalize;
+  overflow-wrap: break-word;
+}
+
+.todo-list li::before {
+  counter-increment: list-item;
+  content: counter(list-item) ".";
+  width: 4ch;
+}
+
+.todo-list li:last-of-type {
+  border-bottom: none;
+}
+
+.todo-list li:hover {
+  background-color: #f0f0f0;
+  transition: all 0.2s;
+}

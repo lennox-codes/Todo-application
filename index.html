@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width" initial-scale=1.0" />
+    <title>ToDo Application</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.2/css/all.css"
+      integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <div>
+      <h1>To Do Application</h1>
+      <div class="input-container">
+        <input class="todo-input" type="text" placeholder="Enter task" />
+        <div class="add-task"><i class="addTodo fas fa-plus"></i></div>
+      </div>
+      <div class="lines"></div>
+      <ol class="todo-list"></ol>
+    </div>
+    <script>
+      $(".addTodo").on("click", () => {
+        let todoTask = $(".todo-input").val();
+        const li = $("<li></li>");
+        li.text(todoTask);
+
+        //Done Button
+        const doneBtn = $("<button></button>");
+        doneBtn.addClass("done");
+        doneBtn.text("Done");
+
+        //Undo Button
+        const undoBtn = $("<button></button>");
+        undoBtn.addClass("undo no-display");
+        undoBtn.text("Undo");
+
+        //Remove Button
+        const rmvBtn = $("<button></button>");
+        rmvBtn.addClass("rmv");
+        rmvBtn.text("Remove");
+
+        //Appending done and remove Buttons
+        $(".todo-list").append(li);
+        $(li).append(undoBtn);
+        $(li).append(doneBtn);
+        $(li).append(rmvBtn);
+
+        //Removing the todo Item
+        $(".rmv").on("click", (e) => {
+          let todoItem = $(e.currentTarget).parent();
+          todoItem.fadeOut("1s");
+        });
+
+        //Marking todo Item as done
+        $(".done").on("click", (e) => {
+          let todoItem = $(e.currentTarget).parent();
+          todoItem.addClass("strikethrough");
+          todoItem.children(".done").addClass("no-display");
+          todoItem.children(".undo").removeClass("no-display");
+        });
+
+        //Undo Marking
+        $(".undo").on("click", (e) => {
+          let todoItem = $(e.target).parent();
+          todoItem.removeClass("strikethrough");
+          todoItem.children(".undo").addClass("no-display");
+          todoItem.children(".done").removeClass("no-display");
+        });
+      });
+    </script>
+  </body>
+</html>
