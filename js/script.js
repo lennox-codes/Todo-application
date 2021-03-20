@@ -18,7 +18,7 @@ $(".addTodo").on("click", () => {
   rmvBtn.addClass("rmv");
   rmvBtn.text("Remove");
 
-  //Appending done and remove Buttons
+  //Appending done and remove buttons
   $(".todo-list").append(li);
   $(li).append(undoBtn);
   $(li).append(doneBtn);
@@ -38,7 +38,7 @@ $(".addTodo").on("click", () => {
     todoItem.children(".undo").removeClass("no-display");
   });
 
-  //Undo Marking
+  //Undo done - should remove strikethrough as well
   $(".undo").on("click", (e) => {
     let todoItem = $(e.target).parent();
     todoItem.removeClass("strikethrough");
