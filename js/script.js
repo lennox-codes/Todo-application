@@ -1,3 +1,5 @@
+//To do Application Implementing JQuery
+
 $(".addTodo").on("click", () => {
   let todoTask = $(".todo-input").val();
   const li = $("<li></li>");
